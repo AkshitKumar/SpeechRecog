@@ -1,4 +1,6 @@
-window.SpeechRecognition = window.SpeechRecognition       ||
+<script>
+      // Test browser support
+      window.SpeechRecognition = window.SpeechRecognition       ||
                                  window.webkitSpeechRecognition ||
                                  null;
 
@@ -54,3 +56,4 @@ window.SpeechRecognition = window.SpeechRecognition       ||
           log.textContent = '';
         });
       }
+    </script>
