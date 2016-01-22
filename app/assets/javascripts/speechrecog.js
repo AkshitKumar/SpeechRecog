@@ -64,46 +64,25 @@ else {
         log.innerHTML = "Sorry I didn't get you";
       }
     });
-    /*
-    for (var i = event.resultIndex; i < event.results.length; i++) {
-      if (event.results[i].isFinal) {
-        transcription.textContent = event.results[i][0].transcript ;
-      } else {
-        transcription.textContent += event.results[i][0].transcript;
-      }
-    }
-    */
     results = [];
   };
 
-        // Listen for errors
+  // Listen for errors
   recognizer.onerror = function(event) {
     //log.innerHTML = 'Recognition error: ' + event.message + '<br />' + log.innerHTML;
     console.log(event.message);
   };
   var play = document.getElementById('button-play-ws');
   play.addEventListener('click', function() {
-  // Set if we need interim results
+    // Set if we need interim results
     recognizer.interimResults = document.querySelector('input[name="recognition-type"][value="interim"]').checked;
     recognizer.stop();
     try {
-      //recognizer.stop();
       transcription.textContent = '';
       log.textContent = '';
       recognizer.start();
-      //log.innerHTML = 'Recognition started' + '<br />' + log.innerHTML;
     } catch(ex) {
-      //log.innerHTML = 'Recognition error: ' + ex.message + '<br />' + log.innerHTML;
+      console.log(event.message);
     }
   });
 }
-/*
-  document.getElementById('button-stop-ws').addEventListener('click', function() {
-    recognizer.stop();
-    log.innerHTML = 'Recognition stopped' + '<br />' + log.innerHTML;
-  });
-  document.getElementById('clear-all').addEventListener('click', function() {
-    transcription.textContent = '';
-    log.textContent = '';
-  });
-*/
